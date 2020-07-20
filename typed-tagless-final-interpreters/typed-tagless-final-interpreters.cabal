@@ -1,0 +1,30 @@
+cabal-version:      3.0
+name:               typed-tagless-final-interpreters
+version:            0.1.0.0
+license:            BSD-3-Clause
+license-file:       LICENSE
+maintainer:         honza.hrk@gmail.com
+author:             Jan Hrček
+homepage:           https://github.com/jhrcek/haskell-papers
+synopsis:           Experiments with Haskell papers
+description:
+    Playing with "Typed Tagless-Final Interpretations: Introductory Course" from Oleg Kiselyov
+
+category:           Experimental
+extra-source-files: CHANGELOG.md
+
+executable typed-tagless-final-interpreters
+    main-is:          Intro1.hs
+    hs-source-dirs:   app
+    other-modules:
+        Intro2
+        Intro3
+        Serialize
+        SerializeExt
+        ExtF
+
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base ^>=4.13.0.0,
+        vector -any
