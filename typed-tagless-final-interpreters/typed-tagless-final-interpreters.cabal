@@ -5,6 +5,7 @@ license:            BSD-3-Clause
 license-file:       LICENSE
 maintainer:         honza.hrk@gmail.com
 author:             Jan Hrček
+tested-with:        ghc ==8.8.3
 homepage:           https://github.com/jhrcek/haskell-papers
 synopsis:           Experiments with Haskell papers
 description:
@@ -13,18 +14,22 @@ description:
 category:           Experimental
 extra-source-files: CHANGELOG.md
 
-executable typed-tagless-final-interpreters
-    main-is:          Intro1.hs
-    hs-source-dirs:   app
-    other-modules:
-        Intro2
-        Intro3
-        Serialize
-        SerializeExt
-        ExtF
+library
+    exposed-modules:
+        Part1.Intro1
+        Part1.Intro2
+        Part1.Intro3
+        Part1.Serialize
+        Part1.SerializeExt
+        Part1.ExtF
+        Part2.FlatF
+        Part2.FlatI
+        Part2.PushNegFExt
+        Part2.PushNegF
+        Part2.PushNegFI
+        Part2.PushNegI
 
+    hs-source-dirs:   src
     default-language: Haskell2010
     ghc-options:      -Wall
-    build-depends:
-        base ^>=4.13.0.0,
-        vector -any
+    build-depends:    base ^>=4.13.0.0

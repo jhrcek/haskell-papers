@@ -3,9 +3,9 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
 -- | Tagless Typed Interpreters: extensibility
-module ExtF where
+module Part1.ExtF where
 
-import Intro2 as F hiding (main)
+import Part1.Intro2 as F hiding (main)
 
 -- We extend the final representation of the language with a new
 -- expression form: multiplication

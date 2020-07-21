@@ -1,14 +1,14 @@
 {-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 -- | Serialization and de-serialization in tagless-final style
 -- The deserialization problem is posed in-- \url{http://userpages.uni-koblenz.de/~laemmel/TheEagle/}
-module Serialize where
+module Part1.Serialize where
 
 import Control.Applicative (liftA2)
 import Control.Monad ((>=>))
 import Data.Function (fix)
-import Intro2 hiding (main)
+import Part1.Intro2 hiding (main)
 
 -- Data type of trees representing our expressions `on the wire'
 -- Our wire format is essentially JASON

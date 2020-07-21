@@ -1,4 +1,4 @@
-{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 -- | Serialization and de-serialization in the tagless-final style
 --  for the extended data type
@@ -11,19 +11,19 @@
 --   a serializer
 --   Add a new expression form (multiplication)
 -- We now see how we can extend the serializer and de-serializer.
-module SerializeExt where
+module Part1.SerializeExt where
 
 -- We really are re-using the existing code (which may already be compiled):
 
 import Control.Applicative (liftA2)
 import Data.Function (fix)
 -- import the extended `variant': Mul
-import ExtF hiding (main)
-import Intro2 hiding (main)
+import Part1.ExtF hiding (main)
+import Part1.Intro2 hiding (main)
 -- import the wire format
-import Serialize (Tree (..))
+import Part1.Serialize (Tree (..))
 -- import the original serializer
-import qualified Serialize as S hiding (main)
+import qualified Part1.Serialize as S hiding (main)
 
 -- * //
 

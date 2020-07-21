@@ -2,12 +2,12 @@
 
 -- | Tagless Typed Interpreters, introduction
 --  Initial and Final, first-class
-module Intro3 where
+module Part1.Intro3 where
 
-import Intro1 (Exp (..))
-import qualified Intro1 as I
-import Intro2 (ExpSYM (..))
-import qualified Intro2 as F
+import Part1.Intro1 (Exp (..))
+import qualified Part1.Intro1 as I
+import Part1.Intro2 (ExpSYM (..))
+import qualified Part1.Intro2 as F
 
 -- Remind what is initial Exp, and what is a final ExpSYM.
 -- Discuss `initial' vs `final' from the categorical view.

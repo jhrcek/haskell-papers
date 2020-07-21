@@ -1,7 +1,7 @@
 -- | Lack of extensibility in the data type view
-module ExtI where
+module Part1.ExtI where
 
-import qualified Intro1 as Old
+import qualified Part1.Intro1 as Old
 
 -- Attempt to add a new expression form: multiplication
 -- We would like to reuse the old code, in Intro1.hs (show the code)

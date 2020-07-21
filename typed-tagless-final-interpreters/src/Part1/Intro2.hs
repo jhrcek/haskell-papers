@@ -3,7 +3,7 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
 -- | Tagless Typed Interpreters, introduction
-module Intro2 where
+module Part1.Intro2 where
 
 -- Parameterizing the final interpreter over the type Repr
 

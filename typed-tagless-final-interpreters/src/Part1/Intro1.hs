@@ -1,5 +1,5 @@
 -- | Tagless Typed Interpreters, introduction
-module Intro1 where
+module Part1.Intro1 where
 
 -- We would like to embed an (object) language whose expressions
 -- look like
