@@ -1,4 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE InstanceSigs #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
 -- | Demonstrating `non-compositional', context-sensitive processing
@@ -40,11 +42,18 @@ data Ctx e = LCA e | NonLCA
 -- the expression in focus.
 
 instance ExpSYM repr => ExpSYM (Ctx repr -> repr) where
-  lit n NonLCA = lit n
-  lit n (LCA e) = add (lit n) e
-  neg e NonLCA = neg (e NonLCA)
-  neg e (LCA e3) = add (neg (e NonLCA)) e3 -- assume only lits are negated
-  add e1 e2 ctx = e1 (LCA (e2 ctx))
+  lit :: Int -> (Ctx repr -> repr)
+  lit n = \case
+    NonLCA -> lit n
+    (LCA e) -> add (lit n) e
+
+  neg :: (Ctx repr -> repr) -> (Ctx repr -> repr)
+  neg e = \case
+    NonLCA -> neg (e NonLCA)
+    (LCA e3) -> add (neg (e NonLCA)) e3 -- assume only lits are negated
+
+  add :: (Ctx repr -> repr) -> (Ctx repr -> repr) -> (Ctx repr -> repr)
+  add e1 e2 = \ctx -> e1 (LCA (e2 ctx))
 
 -- The last clause expresses the reassociation-to-the-right
 

@@ -1,4 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE InstanceSigs #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
 
@@ -6,11 +8,11 @@
 --  Extending the final style
 module Part2.PushNegFExt where
 
--- Explain the imports
+-- `mul' extension
+import Part1.ExtF hiding (main)
 -- Exp in the final form
--- Push_neg interpreter
-import Part1.ExtF hiding (main) -- `mul' extension
 import Part1.Intro2 hiding (main)
+-- Push_neg interpreter
 import Part2.PushNegF as PushNegF hiding (main)
 
 -- * //
@@ -20,8 +22,10 @@ import Part2.PushNegF as PushNegF hiding (main)
 -- * neg (a * b) /= (neg a) * (neg b)
 
 instance MulSYM repr => MulSYM (Ctx -> repr) where
-  mul e1 e2 Pos = mul (e1 Pos) (e2 Pos)
-  mul e1 e2 Neg = mul (e1 Pos) (e2 Neg)
+  mul :: (Ctx -> repr) -> (Ctx -> repr) -> (Ctx -> repr)
+  mul e1 e2 = \case
+    Pos -> mul (e1 Pos) (e2 Pos)
+    Neg -> mul (e1 Pos) (e2 Neg)
 
 -- Let us recall how an extended term looked like
 tfm1_view :: String

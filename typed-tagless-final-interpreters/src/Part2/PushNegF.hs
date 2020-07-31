@@ -1,4 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE InstanceSigs #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
 -- | Demonstrating `non-compositional', context-sensitive processing
@@ -41,11 +43,18 @@ data Ctx = Pos | Neg
 
 -- We transform one interpreter into another
 instance ExpSYM repr => ExpSYM (Ctx -> repr) where
-  lit n Pos = lit n
-  lit n Neg = neg (lit n)
-  neg e Pos = e Neg
-  neg e Neg = e Pos
-  add e1 e2 ctx = add (e1 ctx) (e2 ctx) -- homomorhism
+  lit :: Int -> (Ctx -> repr)
+  lit n = \case
+    Pos -> lit n
+    Neg -> neg (lit n)
+
+  neg :: (Ctx -> repr) -> (Ctx -> repr)
+  neg e = \case
+    Pos -> e Neg
+    Neg -> e Pos
+
+  add :: (Ctx -> repr) -> (Ctx -> repr) -> (Ctx -> repr)
+  add e1 e2 = \ctx -> add (e1 ctx) (e2 ctx) -- homomorhism
 
 -- On the first line, there are two occurrences of lit.
 -- But those two lit belong to different interpreters!

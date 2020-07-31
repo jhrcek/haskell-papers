@@ -16,12 +16,13 @@ extra-source-files: CHANGELOG.md
 
 library
     exposed-modules:
+        Part1.ExtF
+        Part1.ExtI
         Part1.Intro1
         Part1.Intro2
         Part1.Intro3
         Part1.Serialize
         Part1.SerializeExt
-        Part1.ExtF
         Part2.FlatF
         Part2.FlatI
         Part2.PushNegFExt
