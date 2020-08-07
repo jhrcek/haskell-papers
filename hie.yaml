@@ -1,0 +1,4 @@
+cradle:
+  cabal:
+    - path: "typed-tagless-final-interpreters/src"
+      component: "lib:typed-tagless-final-interpreters"

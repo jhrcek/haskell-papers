@@ -29,6 +29,11 @@ library
         Part2.PushNegF
         Part2.PushNegFI
         Part2.PushNegI
+        Part3.IntroHOIF
+        Part3.IntroHOT
+        Part3.TTF
+        Part3.TTFdB
+        Part3.TTIF
 
     hs-source-dirs:   src
     default-language: Haskell2010
